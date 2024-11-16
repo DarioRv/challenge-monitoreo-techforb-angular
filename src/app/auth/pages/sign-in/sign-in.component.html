@@ -1,0 +1,57 @@
+<section class="grid grid-cols-1 md:grid-cols-2 h-screen">
+  <article
+    class="md:flex md:flex-col md:justify-center md:px-10 lg:px-40 text-white relative hidden"
+  >
+    <h1 class="text-5xl font-semibold mb-10">Iniciar sesión</h1>
+    <p class="text-balance mb-8">
+      Nos alegra tenerte de vuelta y estamos listos para atender tus
+      necesidades. Inicia sesión y continúa aprovechando al máximo nuestra
+      plataforma.
+    </p>
+    <ul>
+      <li class="flex gap-3 mb-4">
+        <img
+          class="h-fit mt-1"
+          [src]="'monitoreo' | icon"
+          alt="Icono monitoreo integral"
+        />
+        <div>
+          <h5 class="font-medium">Monitoreo integral</h5>
+          <p>Administra, monitorea mutiples plantas de forma centralizada</p>
+        </div>
+      </li>
+      <li class="flex gap-3 mb-4">
+        <img
+          class="h-fit mt-1"
+          [src]="'notificaciones' | icon"
+          alt="Icono notificaciones en tiempo real"
+        />
+        <div>
+          <h5 class="font-medium">Notificaciones en tiempo real</h5>
+          <p>Recibi notificaciones en tiempo real sobre las mediciones</p>
+        </div>
+      </li>
+    </ul>
+    <div
+      class="absolute right-0 rounded-tl-[32px] rounded-bl-[32px] bg-white w-10 h-full"
+    ></div>
+  </article>
+  <article
+    class="flex flex-col justify-center px-4 md:px-10 lg:px-40 rounded-tl-[32px] rounded-bl-[32px]"
+  >
+    <h2 class="text-4xl font-semibold mb-3 text-center md:text-start">
+      Portal de monitoreo
+    </h2>
+    <h3 class="text-2xl font-medium mb-10 text-center md:text-start">
+      Iniciar sesión
+    </h3>
+    <sign-in-form />
+    <p class="text-gray-500/80 mt-6 text-xs text-center md:text-start">
+      Protegido por reCAPTCHA y sujeto a la
+      <a class="text-primary-500 underline cursor-pointer">
+        Política de Privacidad
+      </a>
+      y <a class="text-primary-500 underline cursor-pointer">Condiciones</a>.
+    </p>
+  </article>
+</section>

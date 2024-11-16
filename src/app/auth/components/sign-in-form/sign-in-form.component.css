@@ -1,0 +1,33 @@
+.form-input {
+  --pad: 0.75rem;
+  position: relative;
+}
+input {
+  width: 100%;
+  padding: var(--pad);
+  border-radius: 12px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  color: inherit;
+  outline: none;
+}
+label {
+  position: absolute;
+  left: var(--pad);
+  top: var(--pad);
+  background: #fff;
+  padding-inline: 0.3em;
+  transition: transform 200ms;
+  pointer-events: none;
+  transform-origin: left;
+  translate: -0.3em;
+  color: #84818a;
+}
+
+input::placeholder {
+  opacity: 0;
+}
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  transform: translateY(calc(-50% - var(--pad))) scale(0.8);
+}

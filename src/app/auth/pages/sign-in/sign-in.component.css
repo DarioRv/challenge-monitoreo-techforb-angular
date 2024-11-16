@@ -1,0 +1,5 @@
+article:first-child {
+  background-image: url("/images/fondo-sign-in.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
