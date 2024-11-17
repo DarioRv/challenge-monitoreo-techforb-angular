@@ -1,0 +1,45 @@
+<table class="w-full">
+  <tr class="text-primary-500/25">
+    <td>País</td>
+    <td>Nombre de la planta</td>
+    <td>Lecutas</td>
+    <td>Alertas medias</td>
+    <td>Alertas rojas</td>
+    <td>Acciones</td>
+  </tr>
+  <br />
+  @for (plant of plants; track $index) {
+  <tr>
+    <td>
+      <div class="flex items-center gap-3">
+        <span [class]="'flag flag-' + plant.codigoPais"></span>
+        {{ plant.pais }}
+      </div>
+    </td>
+    <td>{{ plant.nombre }}</td>
+    <td>{{ plant.lecturas }}</td>
+    <td>{{ plant.alertasMedias }}</td>
+    <td>{{ plant.alertasRojas }}</td>
+    <td>
+      <div class="relative group">
+        <img class="size-6" [src]="'action' | icon" alt="Icono de acción" />
+        <ul
+          class="absolute border border-gray-500 rounded-xl p-2 hidden group-hover:block"
+        >
+          <li>
+            <button class="hover:text-primary-500" (click)="onEdit(plant.id)">
+              Editar
+            </button>
+          </li>
+          <li>
+            <button class="hover:text-primary-500" (click)="onDelete(plant.id)">
+              Eliminar
+            </button>
+          </li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+  <br /><br />
+  }
+</table>
