@@ -1,0 +1,5 @@
+<div class="grid grid-cols-4 gap-10">
+  @for (item of summaries; track $index) {
+  <monitor-summary-card [summary]="item"></monitor-summary-card>
+  }
+</div>

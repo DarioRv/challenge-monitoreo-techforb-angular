@@ -1,0 +1,14 @@
+<div class="flex bg-[#E9F1F4]">
+  <div class="">
+    <sidebar />
+  </div>
+  <div class="flex-grow px-8 py-16">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl font-medium">{{ title }}</h1>
+      <user-activity-bar />
+    </div>
+    <div>
+      <router-outlet />
+    </div>
+  </div>
+</div>

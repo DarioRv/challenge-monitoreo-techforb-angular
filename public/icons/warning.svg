@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 47.5 47.5" enable-background="new 0 0 47.5 47.5" id="Exclamation">
+  <defs>
+    <clipPath id="a">
+      <path d="M0 38h38V0H0v38Z" fill="#000000" class="color000000 svgShape"></path>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#a)" transform="matrix(1.25 0 0 -1.25 0 47.5)" fill="#000000" class="color000000 svgShape">
+    <path d="M0 0a3 3 0 1 0-6 0 3 3 0 0 0 6 0" transform="translate(22 6)" fill="#ff8a48" fill-opacity="1" fill-rule="nonzero" stroke="none" class="color939598 svgShape"></path>
+    <path d="M0 0a3 3 0 0 0-6 0v19a3 3 0 1 0 6 0V0Z" transform="translate(22 14)" fill="#ff8a48" fill-opacity="1" fill-rule="nonzero" stroke="none" class="color939598 svgShape"></path>
+  </g>
+</svg>

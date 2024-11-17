@@ -1,0 +1,15 @@
+<article
+  class="rounded-xl px-3 py-5 flex items-center justify-between bg-white"
+>
+  <div>
+    <h5 class="text-[#8E8EA1]">{{ summary().label }}</h5>
+    <span class="text-xl font-bold">{{ summary().value }}</span>
+  </div>
+  <div class="rounded-full p-5" [ngClass]="getType(summary().type).color">
+    <img
+      [src]="getType(summary().type).icon | icon"
+      alt="icon"
+      class="w-6 h-6"
+    />
+  </div>
+</article>

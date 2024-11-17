@@ -1,0 +1,14 @@
+<ul class="h-screen w-fit px-6 flex flex-col gap-10 bg-white py-20 shadow-lg">
+  @for (item of menuItems; track $index) {
+  <li>
+    <a [routerLink]="item.routerLink">
+      <img [src]="item.icon | icon" alt="Icono {{ item }}" />
+    </a>
+  </li>
+  }
+  <li>
+    <button (click)="signOut()">
+      <img [src]="'cerrar-sesion' | icon" alt="Icono cerrar sesión" />
+    </button>
+  </li>
+</ul>
