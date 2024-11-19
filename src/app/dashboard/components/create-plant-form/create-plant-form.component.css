@@ -1,0 +1,26 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: #838b9e;
+  font-size: 14px;
+}
+
+input,
+select {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #838b9e;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+input:hover,
+input:focus,
+select:hover,
+select:focus {
+  border: 1px solid #33a3aa;
+}

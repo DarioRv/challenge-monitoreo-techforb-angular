@@ -1,0 +1,10 @@
+<div
+  class="absolute top-0 left-0 w-screen h-screen bg-black/50 overflow-hidden"
+  [ngClass]="{ hidden: !open(), block: open() }"
+>
+  <div class="h-full flex items-center justify-center">
+    <div class="w-fit h-fit bg-white rounded-xl p-4 md:px-16 md:py-10">
+      <ng-content />
+    </div>
+  </div>
+</div>
