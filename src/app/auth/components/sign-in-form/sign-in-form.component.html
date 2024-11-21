@@ -29,6 +29,7 @@
     <label for="password">Contraseña</label>
     <button
       class="absolute right-4 translate-y-1/2 text-gray-500"
+      type="button"
       (click)="togglePasswordVisibility()"
     >
       @if (hidePassword) {
@@ -71,13 +72,17 @@
       }
     </div>
   </div>
+  @if (error) {
+  <p class="text-red-500 text-sm mb-5">{{ error }}</p>
+  }
   <div class="flex flex-col md:flex-row justify-between items-center">
     <a class="text-gray-500" href="">¿Olvidaste tu contraseña?</a>
     <button
       class="px-10 py-4 mt-5 md:mt-0 rounded-xl bg-primary-500 hover:bg-primary-600 transition-colors text-white"
       type="submit"
+      [disabled]="isSubmitting"
     >
-      Iniciar sesión
+      {{ isSubmitting ? "Cargando..." : "Iniciar sesión" }}
     </button>
   </div>
 </form>

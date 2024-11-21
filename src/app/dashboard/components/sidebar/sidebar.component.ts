@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IconPipe } from '../../../common/pipes/icon.pipe';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../auth/services/auth.service';
 
 interface MenuItem {
   icon: string;
@@ -15,6 +16,9 @@ interface MenuItem {
   styles: ``,
 })
 export class SidebarComponent {
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+
   menuItems = [
     {
       icon: 'dashboard',
@@ -35,7 +39,7 @@ export class SidebarComponent {
   ];
 
   signOut(): void {
-    // TODO Implementar lógica de cierrar de sesión
-    console.log('Cerrar sesión');
+    this.authService.signOut();
+    this.router.navigate(['/sign-in']);
   }
 }

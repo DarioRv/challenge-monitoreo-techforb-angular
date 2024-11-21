@@ -5,6 +5,9 @@ import {
   FormControl,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Credentials } from '../../interfaces/credentials.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sign-in-form',
@@ -15,8 +18,11 @@ import {
 })
 export class SignInFormComponent {
   private readonly fb = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
   hidePassword = true;
   isSubmitting = false;
+  error = '';
 
   form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -31,6 +37,15 @@ export class SignInFormComponent {
     return this.form.get('password') as FormControl;
   }
 
+  get credentials() {
+    const credentials: Credentials = {
+      email: this.email.value,
+      password: this.password.value,
+    };
+
+    return credentials;
+  }
+
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
   }
@@ -41,7 +56,17 @@ export class SignInFormComponent {
       return;
     }
 
-    // TODO: Implementar lógica de autenticación
-    console.log(this.form.value);
+    this.isSubmitting = true;
+    this.authService.signIn(this.credentials).subscribe({
+      next: () => {
+        this.isSubmitting = false;
+        this.form.reset();
+        this.router.navigate(['/dashboard']);
+      },
+      error: (message) => {
+        this.isSubmitting = false;
+        this.error = message;
+      },
+    });
   }
 }

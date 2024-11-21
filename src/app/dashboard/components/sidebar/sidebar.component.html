@@ -2,13 +2,21 @@
   @for (item of menuItems; track $index) {
   <li>
     <a [routerLink]="item.routerLink">
-      <img [src]="item.icon | icon" alt="Icono {{ item }}" />
+      <img
+        class="hover:scale-125"
+        [src]="item.icon | icon"
+        alt="Icono {{ item }}"
+      />
     </a>
   </li>
   }
   <li>
     <button (click)="signOut()">
-      <img [src]="'cerrar-sesion' | icon" alt="Icono cerrar sesión" />
+      <img
+        class="hover:scale-125"
+        [src]="'cerrar-sesion' | icon"
+        alt="Icono cerrar sesión"
+      />
     </button>
   </li>
 </ul>
