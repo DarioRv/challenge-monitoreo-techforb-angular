@@ -1,4 +1,5 @@
 export interface CreatePlant {
-  nombre: string;
-  pais: string;
+  name: string;
+  country: string;
+  countryCode: string;
 }

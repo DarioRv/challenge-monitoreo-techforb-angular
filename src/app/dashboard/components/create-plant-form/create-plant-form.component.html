@@ -8,17 +8,17 @@
       id="name"
       placeholder="name"
       autocomplete="off"
-      formControlName="nombre"
+      formControlName="name"
     />
     <div class="text-xs text-red-500">
-      @if (nombre.touched && nombre.hasError('required')) {
+      @if (name.touched && name.hasError('required')) {
       <p>El nombre de la planta es obligatorio</p>
       }
     </div>
   </div>
   <div class="form-field mb-5">
     <label for="country">País</label>
-    <select name="country" id="country" formControlName="pais">
+    <select name="country" id="country" formControlName="country">
       <option selected value="none">Seleccione país</option>
       @for (country of countries; track $index) {
       <option [value]="country.name.common">
@@ -27,7 +27,7 @@
       }
     </select>
     <div class="text-xs text-red-500">
-      @if (pais.touched && pais.hasError('pattern')) {
+      @if (country.touched && country.hasError('pattern')) {
       <p>El país de la planta es obligatorio</p>
       }
     </div>

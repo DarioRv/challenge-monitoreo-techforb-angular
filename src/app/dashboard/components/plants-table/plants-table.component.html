@@ -8,18 +8,18 @@
     <td>Acciones</td>
   </tr>
   <br />
-  @for (plant of plants; track $index) {
+  @for (plant of plants(); track $index) {
   <tr>
     <td>
       <div class="flex items-center gap-3">
-        <span [class]="'flag flag-' + plant.codigoPais"></span>
-        {{ plant.pais }}
+        <span [class]="'flag flag-' + plant.countryCode.toLowerCase()"></span>
+        {{ plant.country }}
       </div>
     </td>
-    <td>{{ plant.nombre }}</td>
-    <td>{{ plant.lecturas }}</td>
-    <td>{{ plant.alertasMedias }}</td>
-    <td>{{ plant.alertasRojas }}</td>
+    <td>{{ plant.name }}</td>
+    <td>{{ plant.readings }}</td>
+    <td>{{ plant.mediumAlerts }}</td>
+    <td>{{ plant.redAlerts }}</td>
     <td>
       <div class="relative group">
         <img class="size-6" [src]="'action' | icon" alt="Icono de acción" />
@@ -41,5 +41,11 @@
     </td>
   </tr>
   <br /><br />
+  } @empty {
+  <tr>
+    <td colspan="6" class="text-gray-500 text-center">
+      No hay plantas registradas
+    </td>
+  </tr>
   }
 </table>

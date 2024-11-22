@@ -11,7 +11,7 @@ export const authStatusInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     tap((event) => {
       if (event.type === HttpEventType.Response) {
-        if (event.status === 401) {
+        if (event.status === 401 || event.status === 403) {
           authService.signOut();
           router.navigate(['/sign-in']);
         }

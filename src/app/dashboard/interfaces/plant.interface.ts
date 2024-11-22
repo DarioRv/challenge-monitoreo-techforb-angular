@@ -1,9 +1,10 @@
 export interface Plant {
   id: string;
-  pais: string;
-  codigoPais: string;
-  nombre: string;
-  lecturas: number;
-  alertasMedias: number;
-  alertasRojas: number;
+  country: string;
+  name: string;
+  countryCode: string;
+  readings: number;
+  mediumAlerts: number;
+  redAlerts: number;
+  sensorsDisabled: number;
 }

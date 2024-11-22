@@ -7,6 +7,8 @@ import {
 } from '@angular/forms';
 import { CountriesService } from '../../services/countries.service';
 import { Country } from '../../interfaces/country.interface';
+import { PlantsService } from '../../services/plants.service';
+import { CreatePlant } from '../../interfaces/create-plant.interface';
 
 @Component({
   selector: 'create-plant-form',
@@ -17,24 +19,34 @@ import { Country } from '../../interfaces/country.interface';
 })
 export class CreatePlantFormComponent implements OnInit {
   private readonly countriesService = inject(CountriesService);
+  private readonly plantsService = inject(PlantsService);
   private readonly fb = inject(FormBuilder);
+  error: string = '';
 
   countries: Country[] = [];
 
   plantForm = this.fb.group({
-    nombre: ['', [Validators.required]],
-    pais: ['none', [Validators.pattern(/^(?!none$).*/)]],
-    codigo: [''],
+    name: ['', [Validators.required]],
+    country: ['none', [Validators.pattern(/^(?!none$).*/)]],
+    countryCode: [''],
   });
 
   onCloseForm = output<void>();
 
-  get nombre(): FormControl {
-    return this.plantForm.get('nombre') as FormControl;
+  get name(): FormControl {
+    return this.plantForm.get('name') as FormControl;
   }
 
-  get pais(): FormControl {
-    return this.plantForm.get('pais') as FormControl;
+  get country(): FormControl {
+    return this.plantForm.get('country') as FormControl;
+  }
+
+  get plant(): CreatePlant {
+    return {
+      name: this.plantForm.value.name,
+      country: this.plantForm.value.country,
+      countryCode: this.plantForm.value.countryCode,
+    } as CreatePlant;
   }
 
   ngOnInit(): void {
@@ -58,12 +70,12 @@ export class CreatePlantFormComponent implements OnInit {
 
   setCountryCode() {
     const selectedCountry = this.countries.find(
-      (country) => country.name.common === this.plantForm.value.pais
+      (country) => country.name.common === this.plantForm.value.country
     );
 
     if (selectedCountry) {
       this.plantForm.patchValue({
-        codigo: selectedCountry.cca2,
+        countryCode: selectedCountry.cca2,
       });
     }
   }
@@ -75,7 +87,27 @@ export class CreatePlantFormComponent implements OnInit {
       return;
     }
 
-    // TODO: Implementar lógica para guardar la planta
-    console.log('Formulario válido', this.plantForm.value);
+    this.createPlant();
+  }
+
+  createPlant(): void {
+    this.plantsService.createPlant(this.plant).subscribe({
+      next: () => {
+        this.resetForm();
+        this.onCloseForm.emit();
+      },
+      error: (message) => {
+        this.error = message;
+      },
+    });
+  }
+
+  resetForm(): void {
+    this.plantForm.patchValue({
+      name: '',
+      country: 'none',
+      countryCode: '',
+    });
+    this.plantForm.markAsPristine();
   }
 }
