@@ -5,6 +5,7 @@ import { CreatePlant } from '../interfaces/create-plant.interface';
 import { map, Observable, tap } from 'rxjs';
 import { BackendPlantResponse } from '../interfaces/backend-plant-response.interface';
 import { Plant } from '../interfaces/plant.interface';
+import { UpdatePlant } from '../interfaces/update-plant.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -32,9 +33,15 @@ export class PlantsService {
     );
   }
 
-  updatePlant(id: string, updatePlant: CreatePlant): Observable<Plant> {
+  getPlant(id: string): Observable<Plant> {
     return this.http
-      .put<BackendPlantResponse<Plant>>(`${this.baseUrl}/${id}`, updatePlant)
+      .get<BackendPlantResponse<Plant>>(`${this.baseUrl}/${id}`)
+      .pipe(map((response) => response.data));
+  }
+
+  updatePlant(id: string, updatePlant: UpdatePlant): Observable<Plant> {
+    return this.http
+      .patch<BackendPlantResponse<Plant>>(`${this.baseUrl}/${id}`, updatePlant)
       .pipe(
         map((response) => response.data),
         tap((plant) =>

@@ -49,3 +49,7 @@
   </tr>
   }
 </table>
+
+<ng-dialog [open]="modalOpen">
+  <edit-plant-form [id]="plantIdToEdit" (onCloseForm)="modalOpen = false" />
+</ng-dialog>

@@ -24,3 +24,7 @@ select:hover,
 select:focus {
   border: 1px solid #33a3aa;
 }
+
+input:disabled {
+  background-color: #f2f2f2;
+}

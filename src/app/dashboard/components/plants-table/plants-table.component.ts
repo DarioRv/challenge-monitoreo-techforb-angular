@@ -1,11 +1,13 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { IconPipe } from '../../../common/pipes/icon.pipe';
+import { DialogComponent } from '../../../common/components/dialog/dialog.component';
+import { EditPlantFormComponent } from '../edit-plant-form/edit-plant-form.component';
 import { PlantsService } from '../../services/plants.service';
 
 @Component({
   selector: 'plants-table',
   standalone: true,
-  imports: [IconPipe],
+  imports: [IconPipe, DialogComponent, EditPlantFormComponent],
   templateUrl: './plants-table.component.html',
   styleUrls: ['/src/flags.css'],
 })
