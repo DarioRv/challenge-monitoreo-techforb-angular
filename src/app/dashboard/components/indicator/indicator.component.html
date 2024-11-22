@@ -1,0 +1,30 @@
+<div class="p-4 rounded-xl bg-white">
+  <div class="flex justify-between items-center">
+    <div>
+      <h5 class="mb-2 text-[#8E8EA1]">{{ data().label }}</h5>
+      <div class="flex gap-3 text-xs">
+        <div class="flex gap-2 items-center">
+          <div class="p-1 rounded-full bg-green-500/15">
+            <img class="size-3" [src]="'ok' | icon" alt="Icono ok" />
+          </div>
+          <span>{{ data().values[0] }}</span>
+        </div>
+        <div class="flex gap-2 items-center">
+          <div class="p-1 rounded-full bg-yellow-500/15">
+            <img class="size-3" [src]="'warning' | icon" alt="Icono warning" />
+          </div>
+          <span>{{ data().values[1] }}</span>
+        </div>
+        <div class="flex gap-2 items-center">
+          <div class="p-1 rounded-full bg-red-500/15">
+            <img class="size-3" [src]="'danger' | icon" alt="Icono danger" />
+          </div>
+          <span>{{ data().values[2] }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="p-5 bg-primary-100 rounded-full">
+      <img class="size-6" [src]="data().icon | icon" alt="Icono de indicador" />
+    </div>
+  </div>
+</div>
